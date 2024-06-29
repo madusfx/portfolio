@@ -78,6 +78,40 @@ function App() {
           </a>
         </button>
       </div>
+      <div className="mt-24">
+        <div>
+          <p className="text-indigo-400 text-3xl font-['Preahvihear'] text-left">
+            Experiencias
+          </p>
+        </div>
+        <div className="flex mt-6 items-start">
+          <div>
+            <div className="flex flex-col">
+              <button className="w-44 p-4 hover:bg-indigo-400 hover:border-l-4 hover:border-indigo-600">
+                <p>Voltz Capital S.A.</p>
+              </button>
+              <button className="w-44 p-4 hover:bg-indigo-400 hover:border-l-4 hover:border-indigo-600">
+                <p>Voltz Capital S.A.</p>
+              </button>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center ml-12">
+            <div className="flex justify-between">
+              <p className="text-2xl">Desenvolvedora Full Stack</p>
+              <p>Mar 2022 - Fev 2024</p>
+            </div>
+            <p className="text-left mt-4">
+              Durante essa experiência, tive a oportunidade de aprimorar meus
+              conhecimentos em Front End e Back End. Fui responsável por
+              implementar novas páginas e componentes em aplicações já
+              existentes e por integrá-los com APIs RESTful, utilizando as
+              tecnologias ReactJS, NextJS, Styled Components e Material UI. Além
+              disso, criei uma API do zero usando Clean Architecture com NodeJS
+              e NestJS.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
