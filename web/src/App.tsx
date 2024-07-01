@@ -10,7 +10,7 @@ function App() {
   const [selectedEducation, setSelectedEducation] = useState(education[0]);
 
   return (
-    <div className="w-full">
+    <div>
       <div className="flex flex-col sm:flex-row items-center justify-between">
         <p
           className="text-indigo-400 text-2xl font-['Preahvihear']"
@@ -180,6 +180,12 @@ function App() {
             </div>
           ))}
         </div>
+      </div>
+      <div className="absolute w-full left-0 flex justify-between bg-black text-white text-center p-3 md:px-24 md:py-3 mt-6">
+        <p className="text-sm">@2024 - Maria Eduarda Freitas</p>
+        <p className="text-sm">
+          Powered by <span className="text-indigo-400">{'{}'}</span>
+        </p>
       </div>
     </div>
   );
