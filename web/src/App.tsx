@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import './App.css';
 import resume from './assets/files/resume.pdf';
+import { experiences } from './utils/experiences';
+import { education } from './utils/education';
 
 function App() {
+  const [selectedExperience, setSelectedExperience] = useState(experiences[0]);
+  const [selectedEducation, setSelectedEducation] = useState(education[0]);
+
   return (
     <div className="w-full">
       <div className="flex justify-between">
@@ -86,29 +92,51 @@ function App() {
         </div>
         <div className="flex mt-6 items-start">
           <div>
-            <div className="flex flex-col">
-              <button className="w-44 p-4 hover:bg-indigo-400 hover:border-l-4 hover:border-indigo-600">
-                <p>Voltz Capital S.A.</p>
-              </button>
-              <button className="w-44 p-4 hover:bg-indigo-400 hover:border-l-4 hover:border-indigo-600">
-                <p>Voltz Capital S.A.</p>
-              </button>
-            </div>
+            {experiences.map((experience, index) => (
+              <div key={index} className="flex flex-col">
+                <button
+                  className={`w-44 p-4 ${selectedExperience === experience ? 'bg-indigo-400 border-l-4 border-indigo-600' : 'hover:bg-indigo-400 hover:border-l-4 hover:border-indigo-600'}`}
+                  onClick={() => setSelectedExperience(experience)}
+                >
+                  <p>{experience.place}</p>
+                </button>
+              </div>
+            ))}
           </div>
-          <div className="flex flex-col justify-center ml-12">
-            <div className="flex justify-between">
-              <p className="text-2xl">Desenvolvedora Full Stack</p>
-              <p>Mar 2022 - Fev 2024</p>
+          <div className="flex flex-col justify-center ml-12 w-full">
+            <div className="flex justify-between items-center">
+              <p className="text-2xl">{selectedExperience.title}</p>
+              <p>{selectedExperience.date}</p>
             </div>
-            <p className="text-left mt-4">
-              Durante essa experiência, tive a oportunidade de aprimorar meus
-              conhecimentos em Front End e Back End. Fui responsável por
-              implementar novas páginas e componentes em aplicações já
-              existentes e por integrá-los com APIs RESTful, utilizando as
-              tecnologias ReactJS, NextJS, Styled Components e Material UI. Além
-              disso, criei uma API do zero usando Clean Architecture com NodeJS
-              e NestJS.
-            </p>
+            <p className="text-left mt-4">{selectedExperience.description}</p>
+          </div>
+        </div>
+      </div>
+      <div className="mt-24">
+        <div>
+          <p className="text-indigo-400 text-3xl font-['Preahvihear'] text-left">
+            Educacao
+          </p>
+        </div>
+        <div className="flex mt-6 items-start">
+          <div>
+            {education.map((education, index) => (
+              <div key={index} className="flex flex-col">
+                <button
+                  className={`w-44 p-4 ${selectedEducation === education ? 'bg-indigo-400 border-l-4 border-indigo-600' : 'hover:bg-indigo-400 hover:border-l-4 hover:border-indigo-600'}`}
+                  onClick={() => setSelectedEducation(education)}
+                >
+                  <p>{education.place}</p>
+                </button>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col justify-center ml-12 w-full">
+            <div className="flex justify-between items-center">
+              <p className="text-2xl">{selectedEducation.title}</p>
+              <p>{selectedEducation.date}</p>
+            </div>
+            <p className="text-left mt-4">{selectedEducation.description}</p>
           </div>
         </div>
       </div>
