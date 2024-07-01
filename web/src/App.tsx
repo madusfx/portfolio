@@ -10,21 +10,27 @@ function App() {
 
   return (
     <div className="w-full">
-      <div className="flex justify-between">
-        <p className="text-indigo-400 text-2xl font-['Preahvihear']">
+      <div className="flex flex-col sm:flex-row items-center justify-between">
+        <p
+          className="text-indigo-400 text-2xl font-['Preahvihear']"
+          id="inicio"
+        >
           Maria Eduarda Freitas
         </p>
-        <div className="flex space-x-6">
-          <a href="" className="text-lg">
+        <div className="flex flex-col sm:flex-row mt-3 md:mt-0 md:space-x-6">
+          <a href="#inicio" className="text-lg">
             Início
           </a>
-          <a href="" className="text-lg">
+          <a href="#sobre" className="text-lg">
             Sobre mim
           </a>
-          <a href="" className="text-lg">
+          <a href="#experiencias" className="text-lg">
             Experiências
           </a>
-          <a href="" className="text-lg">
+          <a href="#educacao" className="text-lg">
+            Educação
+          </a>
+          <a href="#projetos" className="text-lg">
             Projetos
           </a>
         </div>
@@ -38,7 +44,7 @@ function App() {
           </p>
           <p className="text-left text-2xl mt-2">Desenvolvedora FullStack</p>
           <div className="flex space-x-6">
-            <button className="w-32 bg-indigo-400 rounded p-2 mt-12">
+            <button className="w-32 bg-indigo-400 rounded p-2 mt-12 hover:bg-indigo-500">
               <a
                 href="https://www.linkedin.com/in/mariaesfreitas/"
                 target="_blank"
@@ -47,7 +53,7 @@ function App() {
                 Linkedin
               </a>
             </button>
-            <button className="w-32 bg-indigo-400 rounded p-2 mt-12">
+            <button className="w-32 bg-indigo-400 rounded p-2 mt-12 hover:bg-indigo-500">
               <a
                 href="https://github.com/madusfx"
                 target="_blank"
@@ -59,7 +65,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col mt-24 items-baseline">
+      <div className="flex flex-col mt-24 items-baseline" id="sobre">
         <p className="text-indigo-400 text-3xl font-['Preahvihear']">
           Sobre mim
         </p>
@@ -78,63 +84,61 @@ function App() {
           musculação e corrida. Além disso, sou uma grande fã de sitcoms, e
           tenho uma paixão especial por Friends.
         </p>
-        <button className="bg-indigo-400 py-2 px-6 rounded mt-12">
+        <button className="bg-indigo-400 py-2 px-6 rounded mt-12 hover:bg-indigo-500">
           <a href={resume} target="_blank" rel="noopener noreferrer">
             Baixar currículo
           </a>
         </button>
       </div>
-      <div className="mt-24">
+      <div className="mt-24" id="experiencias">
         <div>
           <p className="text-indigo-400 text-3xl font-['Preahvihear'] text-left">
             Experiencias
           </p>
         </div>
-        <div className="flex mt-6 items-start">
-          <div>
+        <div className="flex flex-wrap lg:flex-nowrap mt-6 items-start">
+          <div className="flex flex-wrap lg:flex-col">
             {experiences.map((experience, index) => (
-              <div key={index} className="flex flex-col">
-                <button
-                  className={`w-44 p-4 ${selectedExperience === experience ? 'bg-indigo-400 border-l-4 border-indigo-600' : 'hover:bg-indigo-400 hover:border-l-4 hover:border-indigo-600'}`}
-                  onClick={() => setSelectedExperience(experience)}
-                >
-                  <p>{experience.place}</p>
-                </button>
-              </div>
+              <button
+                key={index}
+                className={`w-full md:w-44 p-4 ${selectedExperience === experience ? 'bg-indigo-400 border-l-4 border-indigo-600' : 'hover:bg-indigo-400 hover:border-l-4 hover:border-indigo-600'}`}
+                onClick={() => setSelectedExperience(experience)}
+              >
+                <p>{experience.place}</p>
+              </button>
             ))}
           </div>
-          <div className="flex flex-col justify-center ml-12 w-full">
-            <div className="flex justify-between items-center">
-              <p className="text-2xl">{selectedExperience.title}</p>
-              <p>{selectedExperience.date}</p>
+          <div className="flex flex-col justify-center ml-0 lg:ml-12 w-full mt-6 lg:mt-0">
+            <div className="flex flex-col sm:flex-row justify-between items-center">
+              <p className="text-lg">{selectedExperience.title}</p>
+              <p className="text-sm">{selectedExperience.date}</p>
             </div>
             <p className="text-left mt-4">{selectedExperience.description}</p>
           </div>
         </div>
       </div>
-      <div className="mt-24">
+      <div className="mt-24" id="educacao">
         <div>
           <p className="text-indigo-400 text-3xl font-['Preahvihear'] text-left">
             Educacao
           </p>
         </div>
-        <div className="flex mt-6 items-start">
-          <div>
+        <div className="flex flex-wrap lg:flex-nowrap mt-6 items-start">
+          <div className="flex flex-wrap lg:flex-col">
             {education.map((education, index) => (
-              <div key={index} className="flex flex-col">
-                <button
-                  className={`w-44 p-4 ${selectedEducation === education ? 'bg-indigo-400 border-l-4 border-indigo-600' : 'hover:bg-indigo-400 hover:border-l-4 hover:border-indigo-600'}`}
-                  onClick={() => setSelectedEducation(education)}
-                >
-                  <p>{education.place}</p>
-                </button>
-              </div>
+              <button
+                key={index}
+                className={`w-full md:w-44 p-4 ${selectedEducation === education ? 'bg-indigo-400 border-l-4 border-indigo-600' : 'hover:bg-indigo-400 hover:border-l-4 hover:border-indigo-600'}`}
+                onClick={() => setSelectedEducation(education)}
+              >
+                <p>{education.place}</p>
+              </button>
             ))}
           </div>
-          <div className="flex flex-col justify-center ml-12 w-full">
-            <div className="flex justify-between items-center">
-              <p className="text-2xl">{selectedEducation.title}</p>
-              <p>{selectedEducation.date}</p>
+          <div className="flex flex-col justify-center ml-0 lg:ml-12 w-full mt-6 lg:mt-0">
+            <div className="flex flex-col sm:flex-row justify-between items-center">
+              <p className="text-lg">{selectedEducation.title}</p>
+              <p className="text-sm">{selectedEducation.date}</p>
             </div>
             <p className="text-left mt-4">{selectedEducation.description}</p>
           </div>
