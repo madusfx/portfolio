@@ -3,6 +3,7 @@ import './App.css';
 import resume from './assets/files/resume.pdf';
 import { experiences } from './utils/experiences';
 import { education } from './utils/education';
+import { projects } from './utils/projects';
 
 function App() {
   const [selectedExperience, setSelectedExperience] = useState(experiences[0]);
@@ -142,6 +143,42 @@ function App() {
             </div>
             <p className="text-left mt-4">{selectedEducation.description}</p>
           </div>
+        </div>
+      </div>
+      <div className="flex flex-col mt-24 items-baseline" id="projetos">
+        <p className="text-indigo-400 text-3xl font-['Preahvihear']">
+          Projetos
+        </p>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {projects.map((project, id) => (
+            <div key={id} className="flex flex-col justify-between p-6">
+              <div>
+                <p className="text-2xl text-left mt-6">{project.title}</p>
+                <p className="mt-6 text-left min-h-[100px]">
+                  {project.description}
+                </p>
+              </div>
+              <div>
+                <p className="text-indigo-400 text-left mt-6">
+                  {project.technologies}
+                </p>
+                <div className="mt-6 flex gap-6">
+                  <button className="bg-indigo-400 p-3 rounded w-[215px] text-black hover:bg-indigo-500">
+                    Acessar o projeto
+                  </button>
+                  <button className="border border-indigo-400 p-3 rounded w-[215px] text-indigo-400 hover:bg-indigo-100">
+                    <a
+                      href={project.repository}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Acessar repositório
+                    </a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
