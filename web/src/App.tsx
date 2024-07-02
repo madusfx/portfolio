@@ -4,21 +4,24 @@ import resume from './assets/files/resume.pdf';
 import { experiences } from './utils/experiences';
 import { education } from './utils/education';
 import { projects } from './utils/projects';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [selectedExperience, setSelectedExperience] = useState(experiences[0]);
   const [selectedEducation, setSelectedEducation] = useState(education[0]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row items-center justify-between">
+      <div className="flex items-center justify-between">
         <p
           className="text-indigo-400 text-2xl font-['Preahvihear']"
           id="inicio"
         >
           Maria Eduarda Freitas
         </p>
-        <div className="flex flex-col sm:flex-row mt-3 md:mt-0 md:space-x-6">
+        <div className="flex-col sm:flex-row mt-3 md:mt-0 md:space-x-6 hidden sm:flex">
           <a href="#inicio" className="text-lg">
             Início
           </a>
@@ -35,7 +38,41 @@ function App() {
             Projetos
           </a>
         </div>
+        <div className="sm:hidden">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? (
+              <FontAwesomeIcon
+                icon={faTimes}
+                className="h-8 w-8 text-indigo-400"
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faBars}
+                className="h-8 w-8 text-indigo-400"
+              />
+            )}
+          </button>
+        </div>
       </div>
+      {isMenuOpen && (
+        <div className="flex flex-col mt-3 space-y-3 sm:hidden">
+          <a href="#inicio" className="text-lg">
+            Início
+          </a>
+          <a href="#sobre" className="text-lg">
+            Sobre mim
+          </a>
+          <a href="#experiencias" className="text-lg">
+            Experiências
+          </a>
+          <a href="#educacao" className="text-lg">
+            Educação
+          </a>
+          <a href="#projetos" className="text-lg">
+            Projetos
+          </a>
+        </div>
+      )}
       <div className="h-0.5 bg-slate-800 mt-6" />
       <div className="flex mt-24 justify-between">
         <div>
@@ -67,9 +104,7 @@ function App() {
         </div>
       </div>
       <div className="flex flex-col mt-24 items-baseline" id="sobre">
-        <p className="text-indigo-400 text-3xl font-['Preahvihear']">
-          Sobre mim
-        </p>
+        <p className="text-indigo-400 text-3xl">Sobre mim</p>
         <p className="text-xl mt-4">Ponta Grossa, Brasil</p>
         <p className="text-left mt-4">
           Meu nome é Maria Eduarda, tenho 22 anos e sou paranaense. Minha
@@ -78,8 +113,7 @@ function App() {
           me apaixonando e me encontrando profissionalmente e hoje sou muito
           realizada com o que eu faço. Com o fim da faculdade, tenho buscado
           fazer cursos para aprimorar meus conhecimentos e tenho trabalhado em
-          alguns projetos pessoais também, além de ter dado início a uma pós de
-          Engenharia de Software Ágil pela PUCPR.
+          alguns projetos pessoais também.
           <br />
           Nas horas vagas eu costumo gostar de praticar esportes, principalmente
           musculação e corrida. Além disso, sou uma grande fã de sitcoms, e
@@ -93,9 +127,7 @@ function App() {
       </div>
       <div className="mt-24" id="experiencias">
         <div>
-          <p className="text-indigo-400 text-3xl font-['Preahvihear'] text-left">
-            Experiencias
-          </p>
+          <p className="text-indigo-400 text-3xl text-left">Experiências</p>
         </div>
         <div className="flex flex-wrap lg:flex-nowrap mt-6 items-start">
           <div className="flex flex-wrap lg:flex-col">
@@ -120,9 +152,7 @@ function App() {
       </div>
       <div className="mt-24" id="educacao">
         <div>
-          <p className="text-indigo-400 text-3xl font-['Preahvihear'] text-left">
-            Educacao
-          </p>
+          <p className="text-indigo-400 text-3xl text-left">Educação</p>
         </div>
         <div className="flex flex-wrap lg:flex-nowrap mt-6 items-start">
           <div className="flex flex-wrap lg:flex-col">
@@ -146,9 +176,7 @@ function App() {
         </div>
       </div>
       <div className="flex flex-col mt-24 items-baseline" id="projetos">
-        <p className="text-indigo-400 text-3xl font-['Preahvihear']">
-          Projetos
-        </p>
+        <p className="text-indigo-400 text-3xl">Projetos</p>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {projects.map((project, id) => (
             <div key={id} className="flex flex-col justify-between p-6">
