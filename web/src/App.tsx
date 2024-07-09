@@ -192,7 +192,13 @@ function App() {
                 </p>
                 <div className="mt-6 flex gap-6">
                   <button className="bg-indigo-400 p-3 rounded w-[215px] text-black hover:bg-indigo-500">
-                    Acessar o projeto
+                    <a
+                      href={project.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Acessar o projeto
+                    </a>
                   </button>
                   <button className="border border-indigo-400 p-3 rounded w-[215px] text-indigo-400 hover:bg-indigo-100">
                     <a
